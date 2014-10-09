@@ -50,6 +50,8 @@ SH
 )
 fi
 
+echo "extension=gettext.so" >> /app/vendor/php/etc/conf.d/gettext.ini
+
 build_command=$(cat <<BUILD_CMD
     mkdir -p "/app/vendor/php/zlib" "/app/vendor/libmcrypt" "/app/vendor/libicu" \
     && curl "http://${S3_BUCKET}.s3.amazonaws.com/package/libicu-51.tgz" | tar xzv -C /app/vendor/libicu \
@@ -89,7 +91,7 @@ build_command=$(cat <<BUILD_CMD
     --enable-sockets \
     --enable-bcmath \
     --with-readline \
-    --with-gettext=/app/vendor/gettext \
+    --with-gettext=shared \
     --with-mcrypt=/app/vendor/libmcrypt \
     --disable-debug \
     && make \
