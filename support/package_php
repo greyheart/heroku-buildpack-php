@@ -89,6 +89,7 @@ build_command=$(cat <<BUILD_CMD
     --enable-sockets \
     --enable-bcmath \
     --with-readline \
+    --with-gettext=/app/vendor/gettext \
     --with-mcrypt=/app/vendor/libmcrypt \
     --disable-debug \
     && make \
